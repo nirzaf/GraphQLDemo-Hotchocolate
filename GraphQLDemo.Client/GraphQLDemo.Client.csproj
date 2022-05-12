@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <GraphQL Remove="GetCourseById.graphql" />
+    <GraphQL Remove="Queries\SearchQuery.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Queries\CourseByIdQuery.graphql" />
+    <None Remove="Queries\SearchQuery.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="11.3.2" />
+    <PackageReference Include="StrawberryShake.Transport.Http" Version="11.3.2" />
+    <PackageReference Include="StrawberryShake.Transport.WebSockets" Version="11.3.6" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mutations\" />
+    <Folder Include="Subscriptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <GraphQLConfig Include="Queries\SearchQuery.graphql" />
+  </ItemGroup>
+
+</Project>
