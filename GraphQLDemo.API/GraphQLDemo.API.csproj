@@ -12,15 +12,18 @@
     <PackageReference Include="FirebaseAdminAuthentication.DependencyInjection" Version="1.0.2" />
     <PackageReference Include="FluentValidation" Version="11.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.0.1" />
-    <PackageReference Include="HotChocolate.AspNetCore" Version="12.7.0" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="12.9.0" />
     <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="12.9.0" />
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
   </ItemGroup>
 

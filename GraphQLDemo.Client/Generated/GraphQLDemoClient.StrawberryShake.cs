@@ -3945,18 +3945,20 @@ namespace GraphQLDemo.Client
         {
             return serializedValue switch
             {
-            "MATHEMATICS" => Subject.Mathematics, "SCIENCE" => Subject.Science, "HISTORY" => Subject.History, _ => throw new global::StrawberryShake.GraphQLClientException()}
-
-            ;
+                "MATHEMATICS" => Subject.Mathematics,
+                "SCIENCE" => Subject.Science,
+                "HISTORY" => Subject.History,
+                _ => throw new global::StrawberryShake.GraphQLClientException()};
         }
 
         public global::System.Object Format(global::System.Object? runtimeValue)
         {
             return runtimeValue switch
             {
-            Subject.Mathematics => "MATHEMATICS", Subject.Science => "SCIENCE", Subject.History => "HISTORY", _ => throw new global::StrawberryShake.GraphQLClientException()}
-
-            ;
+                Subject.Mathematics => "MATHEMATICS",
+                Subject.Science => "SCIENCE",
+                Subject.History => "HISTORY",
+                _ => throw new global::StrawberryShake.GraphQLClientException()};
         }
     }
 
@@ -3975,18 +3977,18 @@ namespace GraphQLDemo.Client
         {
             return serializedValue switch
             {
-            "ASC" => SortEnumType.Asc, "DESC" => SortEnumType.Desc, _ => throw new global::StrawberryShake.GraphQLClientException()}
-
-            ;
+                "ASC" => SortEnumType.Asc,
+                "DESC" => SortEnumType.Desc,
+                _ => throw new global::StrawberryShake.GraphQLClientException()};
         }
 
         public global::System.Object Format(global::System.Object? runtimeValue)
         {
             return runtimeValue switch
             {
-            SortEnumType.Asc => "ASC", SortEnumType.Desc => "DESC", _ => throw new global::StrawberryShake.GraphQLClientException()}
-
-            ;
+                SortEnumType.Asc => "ASC",
+                SortEnumType.Desc => "DESC",
+                _ => throw new global::StrawberryShake.GraphQLClientException()};
         }
     }
 
@@ -7760,18 +7762,22 @@ namespace GraphQLDemo.Client.State
             global::System.String __typename = obj.GetProperty("__typename").GetString()!;
             return __typename switch
             {
-            "CourseResult" => ParseCourseResultEntityId(obj, __typename), "CourseType" => ParseCourseTypeEntityId(obj, __typename), "InstructorType" => ParseInstructorTypeEntityId(obj, __typename), "StudentType" => ParseStudentTypeEntityId(obj, __typename), _ => throw new global::System.NotSupportedException()}
-
-            ;
+                "CourseResult" => ParseCourseResultEntityId(obj, __typename),
+                "CourseType" => ParseCourseTypeEntityId(obj, __typename),
+                "InstructorType" => ParseInstructorTypeEntityId(obj, __typename),
+                "StudentType" => ParseStudentTypeEntityId(obj, __typename),
+                _ => throw new global::System.NotSupportedException()};
         }
 
         public global::System.String Format(global::StrawberryShake.EntityId entityId)
         {
             return entityId.Name switch
             {
-            "CourseResult" => FormatCourseResultEntityId(entityId), "CourseType" => FormatCourseTypeEntityId(entityId), "InstructorType" => FormatInstructorTypeEntityId(entityId), "StudentType" => FormatStudentTypeEntityId(entityId), _ => throw new global::System.NotSupportedException()}
-
-            ;
+                "CourseResult" => FormatCourseResultEntityId(entityId),
+                "CourseType" => FormatCourseTypeEntityId(entityId),
+                "InstructorType" => FormatInstructorTypeEntityId(entityId),
+                "StudentType" => FormatStudentTypeEntityId(entityId),
+                _ => throw new global::System.NotSupportedException()};
         }
 
         private global::StrawberryShake.EntityId ParseCourseResultEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
@@ -7846,7 +7852,7 @@ namespace GraphQLDemo.Client.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "11.3.2.0")]
     public partial class GraphQLDemoClientStoreAccessor : global::StrawberryShake.StoreAccessor
     {
-        public GraphQLDemoClientStoreAccessor(global::StrawberryShake.IOperationStore operationStore, global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer entityIdSerializer, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory> requestFactories, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory> resultDataFactories): base(operationStore, entityStore, entityIdSerializer, requestFactories, resultDataFactories)
+        public GraphQLDemoClientStoreAccessor(global::StrawberryShake.IOperationStore operationStore, global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer entityIdSerializer, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory> requestFactories, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory> resultDataFactories) : base(operationStore, entityStore, entityIdSerializer, requestFactories, resultDataFactories)
         {
         }
     }
