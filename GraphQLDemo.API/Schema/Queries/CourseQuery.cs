@@ -34,20 +34,20 @@ namespace GraphQLDemo.API.Schema.Queries
         [UseDbContext(typeof(SchoolDbContext))]
         public async Task<CourseType> GetCourseByIdAsync(Guid id, [ScopedService] SchoolDbContext context)
         {
-            CourseDTO courseDTO = await context.Courses.FindAsync(id);
+            CourseDto courseDto = await context.Courses.FindAsync(id);
 
-            if(courseDTO == null)
+            if(courseDto == null)
             {
                 return null;
             }
 
             return new CourseType()
             {
-                Id = courseDTO.Id,
-                Name = courseDTO.Name,
-                Subject = courseDTO.Subject,
-                InstructorId = courseDTO.InstructorId,
-                CreatorId = courseDTO.CreatorId
+                Id = courseDto.Id,
+                Name = courseDto.Name,
+                Subject = courseDto.Subject,
+                InstructorId = courseDto.InstructorId,
+                CreatorId = courseDto.CreatorId
             };
         }
     }

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 
 namespace GraphQLDemo.API.DTOs
 {
-    public class StudentDTO
+    public class StudentDto
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public double GPA { get; set; }
-
-        public IEnumerable<CourseDTO> Courses { get; set; }
+        public double Gpa { get; set; }
+        public IEnumerable<CourseDto> Courses { get; set; }
     }
 }

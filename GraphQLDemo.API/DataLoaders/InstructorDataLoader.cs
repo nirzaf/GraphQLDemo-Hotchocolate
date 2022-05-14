@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GraphQLDemo.API.DataLoaders
 {
-    public class InstructorDataLoader : BatchDataLoader<Guid, InstructorDTO>
+    public class InstructorDataLoader : BatchDataLoader<Guid, InstructorDto>
     {
         private readonly InstructorsRepository _instructorsRepository;
 
@@ -22,9 +22,9 @@ namespace GraphQLDemo.API.DataLoaders
             _instructorsRepository = instructorsRepository;
         }
 
-        protected override async Task<IReadOnlyDictionary<Guid, InstructorDTO>> LoadBatchAsync(IReadOnlyList<Guid> keys, CancellationToken cancellationToken)
+        protected override async Task<IReadOnlyDictionary<Guid, InstructorDto>> LoadBatchAsync(IReadOnlyList<Guid> keys, CancellationToken cancellationToken)
         {
-            IEnumerable<InstructorDTO> instructors = await _instructorsRepository.GetManyByIds(keys);
+            IEnumerable<InstructorDto> instructors = await _instructorsRepository.GetManyByIds(keys);
 
             return instructors.ToDictionary(i => i.Id);
         }

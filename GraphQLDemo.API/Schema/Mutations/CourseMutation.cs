@@ -33,7 +33,7 @@ namespace GraphQLDemo.API.Schema.Mutations
         {
             string userId = user.Id;
 
-            CourseDTO courseDTO = new CourseDTO()
+            CourseDto courseDto = new CourseDto()
             {
                 Name = courseInput.Name,
                 Subject = courseInput.Subject,
@@ -41,14 +41,14 @@ namespace GraphQLDemo.API.Schema.Mutations
                 CreatorId = userId
             };
 
-            courseDTO = await _coursesRepository.Create(courseDTO);
+            courseDto = await _coursesRepository.Create(courseDto);
 
             CourseResult course = new CourseResult()
             {
-                Id = courseDTO.Id,
-                Name = courseDTO.Name,
-                Subject = courseDTO.Subject,
-                InstructorId = courseDTO.InstructorId
+                Id = courseDto.Id,
+                Name = courseDto.Name,
+                Subject = courseDto.Subject,
+                InstructorId = courseDto.InstructorId
             };
 
             await topicEventSender.SendAsync(nameof(Subscription.CourseCreated), course);
@@ -65,30 +65,30 @@ namespace GraphQLDemo.API.Schema.Mutations
         {
             string userId = user.Id;
 
-            CourseDTO courseDTO = await _coursesRepository.GetById(id);
+            CourseDto courseDto = await _coursesRepository.GetById(id);
 
-            if(courseDTO == null)
+            if(courseDto == null)
             {
                 throw new GraphQLException(new Error("Course not found.", "COURSE_NOT_FOUND"));
             }
 
-            if (courseDTO.CreatorId != userId)
+            if (courseDto.CreatorId != userId)
             {
                 throw new GraphQLException(new Error("You do not have permission to update this course.", "INVALID_PERMISSION"));
             }
 
-            courseDTO.Name = courseInput.Name;
-            courseDTO.Subject = courseInput.Subject;
-            courseDTO.InstructorId = courseInput.InstructorId;
+            courseDto.Name = courseInput.Name;
+            courseDto.Subject = courseInput.Subject;
+            courseDto.InstructorId = courseInput.InstructorId;
 
-            courseDTO = await _coursesRepository.Update(courseDTO);
+            courseDto = await _coursesRepository.Update(courseDto);
 
             CourseResult course = new CourseResult()
             {
-                Id = courseDTO.Id,
-                Name = courseDTO.Name,
-                Subject = courseDTO.Subject,
-                InstructorId = courseDTO.InstructorId
+                Id = courseDto.Id,
+                Name = courseDto.Name,
+                Subject = courseDto.Subject,
+                InstructorId = courseDto.InstructorId
             };
 
             string updateCourseTopic = $"{course.Id}_{nameof(Subscription.CourseUpdated)}";

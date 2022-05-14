@@ -23,22 +23,22 @@ namespace GraphQLDemo.API.Schema.Mutations
             [ScopedService] SchoolDbContext context,
             [Service] ITopicEventSender topicEventSender)
         {
-            InstructorDTO instructorDTO = new InstructorDTO()
+            InstructorDto instructorDto = new InstructorDto()
             {
                 FirstName = instructorInput.FirstName,
                 LastName = instructorInput.LastName,
                 Salary = instructorInput.Salary,
             };
 
-            context.Add(instructorDTO);
+            context.Add(instructorDto);
             await context.SaveChangesAsync();
 
             InstructorResult instructorResult = new InstructorResult()
             {
-                Id = instructorDTO.Id,
-                FirstName = instructorDTO.FirstName,
-                LastName = instructorDTO.LastName,
-                Salary = instructorDTO.Salary,
+                Id = instructorDto.Id,
+                FirstName = instructorDto.FirstName,
+                LastName = instructorDto.LastName,
+                Salary = instructorDto.Salary,
             };
 
             await topicEventSender.SendAsync(nameof(Subscription.InstructorCreated), instructorResult);
@@ -53,26 +53,26 @@ namespace GraphQLDemo.API.Schema.Mutations
             [UseFluentValidation, UseValidator<InstructorTypeInputValidator>] InstructorTypeInput instructorInput,
             [ScopedService] SchoolDbContext context)
         {
-            InstructorDTO instructorDTO = await context.Instructors.FindAsync(id);
+            InstructorDto instructorDto = await context.Instructors.FindAsync(id);
 
-            if(instructorDTO == null)
+            if(instructorDto == null)
             {
                 throw new GraphQLException(new Error("Instructor not found.", "INSTRUCTOR_NOT_FOUND"));
             }
 
-            instructorDTO.FirstName = instructorInput.FirstName;
-            instructorDTO.LastName = instructorInput.LastName;
-            instructorDTO.Salary = instructorInput.Salary;
+            instructorDto.FirstName = instructorInput.FirstName;
+            instructorDto.LastName = instructorInput.LastName;
+            instructorDto.Salary = instructorInput.Salary;
 
-            context.Update(instructorDTO);
+            context.Update(instructorDto);
             await context.SaveChangesAsync();
 
             InstructorResult instructorResult = new InstructorResult()
             {
-                Id = instructorDTO.Id,
-                FirstName = instructorDTO.FirstName,
-                LastName = instructorDTO.LastName,
-                Salary = instructorDTO.Salary,
+                Id = instructorDto.Id,
+                FirstName = instructorDto.FirstName,
+                LastName = instructorDto.LastName,
+                Salary = instructorDto.Salary,
             };
 
             return instructorResult;
@@ -82,12 +82,12 @@ namespace GraphQLDemo.API.Schema.Mutations
         [UseDbContext(typeof(SchoolDbContext))]
         public async Task<bool> DeleteInstructor(Guid id, [ScopedService] SchoolDbContext context)
         {
-            InstructorDTO instructorDTO = new InstructorDTO()
+            InstructorDto instructorDto = new InstructorDto()
             {
                 Id = id
             };
 
-            context.Remove(instructorDTO);
+            context.Remove(instructorDto);
 
             try
             {

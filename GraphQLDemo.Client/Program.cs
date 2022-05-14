@@ -20,18 +20,18 @@ namespace GraphQLDemo.Client
                 {
                     string graphqlApiUrl = context.Configuration.GetValue<string>("GRAPHQL_API_URL");
 
-                    string httpGraphQLApiUrl = $"http://{graphqlApiUrl}";
-                    string webSocketsGraphQLApiUrl = $"ws://{graphqlApiUrl}";
+                    string httpGraphQlApiUrl = $"http://{graphqlApiUrl}";
+                    string webSocketsGraphQlApiUrl = $"ws://{graphqlApiUrl}";
 
                     services
                         .AddGraphQLDemoClient()
                         .ConfigureHttpClient((services, c) => {
-                            c.BaseAddress = new Uri(httpGraphQLApiUrl);
+                            c.BaseAddress = new Uri(httpGraphQlApiUrl);
 
                             TokenStore tokenStore = services.GetRequiredService<TokenStore>();
                             c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", tokenStore.AccessToken);
                         })
-                        .ConfigureWebSocketClient(c => c.Uri = new Uri(webSocketsGraphQLApiUrl));
+                        .ConfigureWebSocketClient(c => c.Uri = new Uri(webSocketsGraphQlApiUrl));
 
                     services.AddHostedService<Startup>();
 

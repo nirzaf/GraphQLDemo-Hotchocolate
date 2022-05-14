@@ -16,7 +16,7 @@ namespace GraphQLDemo.API.Services.Instructors
             _contextFactory = contextFactory;
         }
 
-        public async Task<InstructorDTO> GetById(Guid instructorId)
+        public async Task<InstructorDto> GetById(Guid instructorId)
         {
             using (SchoolDbContext context = _contextFactory.CreateDbContext())
             {
@@ -24,7 +24,7 @@ namespace GraphQLDemo.API.Services.Instructors
             }
         }
 
-        public async Task<IEnumerable<InstructorDTO>> GetManyByIds(IReadOnlyList<Guid> instructorIds)
+        public async Task<IEnumerable<InstructorDto>> GetManyByIds(IReadOnlyList<Guid> instructorIds)
         {
             using (SchoolDbContext context = _contextFactory.CreateDbContext())
             {

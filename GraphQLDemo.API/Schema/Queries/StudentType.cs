@@ -10,6 +10,6 @@ namespace GraphQLDemo.API.Schema.Queries
         public string LastName { get; set; }
 
         [GraphQLName("gpa")]
-        public double GPA { get; set; }
+        public double Gpa { get; set; }
     }
 }

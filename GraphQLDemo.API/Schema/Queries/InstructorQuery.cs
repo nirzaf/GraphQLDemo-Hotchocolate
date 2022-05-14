@@ -31,19 +31,19 @@ namespace GraphQLDemo.API.Schema.Queries
         [UseDbContext(typeof(SchoolDbContext))]
         public async Task<InstructorType> GetInstructorById(Guid id, [ScopedService] SchoolDbContext context)
         {
-            InstructorDTO instructorDTO = await context.Instructors.FindAsync(id);
+            InstructorDto instructorDto = await context.Instructors.FindAsync(id);
 
-            if(instructorDTO == null)
+            if(instructorDto == null)
             {
                 return null;
             }
 
             return new InstructorType
             {
-                Id = instructorDTO.Id,
-                FirstName = instructorDTO.FirstName,
-                LastName = instructorDTO.LastName,
-                Salary = instructorDTO.Salary,
+                Id = instructorDto.Id,
+                FirstName = instructorDto.FirstName,
+                LastName = instructorDto.LastName,
+                Salary = instructorDto.Salary,
             };
         }
     }

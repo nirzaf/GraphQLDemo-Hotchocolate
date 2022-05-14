@@ -15,7 +15,7 @@ namespace GraphQLDemo.API.Services.Courses
             _contextFactory = contextFactory;
         }
 
-        public async Task<IEnumerable<CourseDTO>> GetAll()
+        public async Task<IEnumerable<CourseDto>> GetAll()
         {
             using (SchoolDbContext context = _contextFactory.CreateDbContext())
             {
@@ -23,7 +23,7 @@ namespace GraphQLDemo.API.Services.Courses
             }
         }
 
-        public async Task<CourseDTO> GetById(Guid courseId)
+        public async Task<CourseDto> GetById(Guid courseId)
         {
             using (SchoolDbContext context = _contextFactory.CreateDbContext())
             {
@@ -31,7 +31,7 @@ namespace GraphQLDemo.API.Services.Courses
             }
         }
 
-        public async Task<CourseDTO> Create(CourseDTO course)
+        public async Task<CourseDto> Create(CourseDto course)
         {
             using(SchoolDbContext context = _contextFactory.CreateDbContext())
             {
@@ -42,7 +42,7 @@ namespace GraphQLDemo.API.Services.Courses
             }    
         }
 
-        public async Task<CourseDTO> Update(CourseDTO course)
+        public async Task<CourseDto> Update(CourseDto course)
         {
             using (SchoolDbContext context = _contextFactory.CreateDbContext())
             {
@@ -57,7 +57,7 @@ namespace GraphQLDemo.API.Services.Courses
         {
             using (SchoolDbContext context = _contextFactory.CreateDbContext())
             {
-                CourseDTO course = new CourseDTO()
+                CourseDto course = new CourseDto()
                 {
                     Id = id
                 };

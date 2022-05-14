@@ -22,14 +22,14 @@ namespace GraphQLDemo.API.Schema.Queries
         [GraphQLNonNullType]
         public async Task<InstructorType> Instructor([Service] InstructorDataLoader instructorDataLoader)
         {
-            InstructorDTO instructorDTO = await instructorDataLoader.LoadAsync(InstructorId, CancellationToken.None);
+            InstructorDto instructorDto = await instructorDataLoader.LoadAsync(InstructorId, CancellationToken.None);
             
             return new InstructorType()
             {
-                Id = instructorDTO.Id,
-                FirstName = instructorDTO.FirstName,
-                LastName = instructorDTO.LastName,
-                Salary = instructorDTO.Salary,
+                Id = instructorDto.Id,
+                FirstName = instructorDto.FirstName,
+                LastName = instructorDto.LastName,
+                Salary = instructorDto.Salary,
             };
         }
 

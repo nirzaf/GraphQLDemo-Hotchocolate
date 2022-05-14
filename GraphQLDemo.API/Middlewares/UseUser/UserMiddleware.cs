@@ -8,7 +8,7 @@ namespace GraphQLDemo.API.Middlewares.UseUser
 {
     public class UserMiddleware
     {
-        public const string USER_CONTEXT_DATA_KEY = "User";
+        public const string UserContextDataKey = "User";
 
         private readonly FieldDelegate _next;
 
@@ -24,7 +24,7 @@ namespace GraphQLDemo.API.Middlewares.UseUser
             {
                 bool emailVerified = bool.TryParse(claimsPrincipal.FindFirstValue(FirebaseUserClaimType.EMAIL_VERIFIED), out bool result) && result;
                 
-                User user = new User()
+                User user = new()
                 {
                     Id = claimsPrincipal.FindFirstValue(FirebaseUserClaimType.ID),
                     Email = claimsPrincipal.FindFirstValue(FirebaseUserClaimType.EMAIL),
@@ -32,7 +32,7 @@ namespace GraphQLDemo.API.Middlewares.UseUser
                     EmailVerified = emailVerified,
                 };
 
-                context.ContextData.Add(USER_CONTEXT_DATA_KEY, user);
+                context.ContextData.Add(UserContextDataKey, user);
             }
 
             await _next(context);

@@ -11,7 +11,7 @@ namespace GraphQLDemo.API.DataLoaders
 {
     public class UserDataLoader : BatchDataLoader<string, UserType>
     {
-        private const int MAX_FIREBASE_USERS_BATCH_SIZE = 100;
+        private const int MaxFirebaseUsersBatchSize = 100;
 
         private readonly FirebaseAuth _firebaseAuth;
 
@@ -20,7 +20,7 @@ namespace GraphQLDemo.API.DataLoaders
             IBatchScheduler batchScheduler) 
             : base(batchScheduler, new DataLoaderOptions()
             {
-                MaxBatchSize = MAX_FIREBASE_USERS_BATCH_SIZE
+                MaxBatchSize = MaxFirebaseUsersBatchSize
             })
         {
             _firebaseAuth = FirebaseAuth.GetAuth(firebaseApp);
