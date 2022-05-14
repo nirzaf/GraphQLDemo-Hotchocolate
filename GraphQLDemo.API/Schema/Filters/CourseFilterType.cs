@@ -8,7 +8,6 @@ namespace GraphQLDemo.API.Schema.Filters
         protected override void Configure(IFilterInputTypeDescriptor<CourseType> descriptor)
         {
             descriptor.Ignore(c => c.Students);
-
             base.Configure(descriptor);
         }
     }
