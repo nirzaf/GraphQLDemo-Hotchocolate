@@ -34,6 +34,10 @@ namespace GraphQLDemo.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddFluentValidation();
+
+            string connectionString = _configuration.GetConnectionString("default");
+            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlServer(connectionString).LogTo(WriteLine));
+
             services.AddTransient<CourseTypeInputValidator>();
             services.AddTransient<InstructorTypeInputValidator>();
 
@@ -66,10 +70,6 @@ namespace GraphQLDemo.API
                     p => p.RequireClaim(FirebaseUserClaimType.EMAIL, "singletonsean4@gmail.com")));
 
             services.AddInMemorySubscriptions();
-
-            string connectionString = _configuration.GetConnectionString("default");
-            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlServer(connectionString).LogTo(WriteLine));
-
             services.AddScoped<CoursesRepository>();
             services.AddScoped<InstructorsRepository>();
             services.AddScoped<InstructorDataLoader>();
