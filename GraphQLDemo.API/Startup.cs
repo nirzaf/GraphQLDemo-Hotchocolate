@@ -18,7 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
+using static System.Console;
 
 namespace GraphQLDemo.API
 {
@@ -68,7 +68,7 @@ namespace GraphQLDemo.API
             services.AddInMemorySubscriptions();
 
             string connectionString = _configuration.GetConnectionString("default");
-            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlServer(connectionString).LogTo(Console.WriteLine));
+            services.AddPooledDbContextFactory<SchoolDbContext>(o => o.UseSqlServer(connectionString).LogTo(WriteLine));
 
             services.AddScoped<CoursesRepository>();
             services.AddScoped<InstructorsRepository>();
@@ -82,13 +82,9 @@ namespace GraphQLDemo.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseRouting();
-
             app.UseAuthentication();
-
             app.UseWebSockets();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGraphQL();
